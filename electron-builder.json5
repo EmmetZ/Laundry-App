@@ -1,0 +1,33 @@
+// @see - https://www.electron.build/configuration/configuration
+{
+  "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
+  "appId": "114514",
+  "asar": true,
+  "productName": "Laundry-App",
+  "directories": {
+    "output": "release/${version}"
+  },
+  "files": [
+    "dist",
+    "dist-electron"
+  ],
+  "afterPack": "./build/afterPack.js",
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "icon": "./public/icon.ico",
+    "artifactName": "${productName}-Windows-${version}-setup.${ext}"
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "deleteAppDataOnUninstall": true,
+  }
+}
